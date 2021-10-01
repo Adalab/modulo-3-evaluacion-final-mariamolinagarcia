@@ -1,27 +1,43 @@
 
-import '../styles/App.scss';
-import '../styles/page.scss';
-import { Link, Route, Switch } from 'react-router-dom';
+import '../styles/app.scss';
+
+import { useState, useEffect } from 'react';
+import {  Route, Switch } from 'react-router-dom';
+import getCharactersFromApi from './services/Api';
+import Header from './Header';
+
+import CharacterList from './CharacterList';
 
 function App() {
+  
+  const [data , setData] = useState([]);
+  
+
+
+ 
+  useEffect(() => {
+    getCharactersFromApi()
+      .then( (data) => {
+        setData(data)
+    });
+  } , []);
+  console.log (data);
+
+
+
   return (
-    <div>
-    <h2>Este título aparece siempre</h2>
+    <div className="page">
+    
+    <Header />
 
-    <Route path="/contacto">
-      <h2>Este título solo aparece cuando la usuaria entra en la página de contacto</h2>
-    </Route>
+    <main>
+      <section>
+        <CharacterList data={data} />
+       </section>
+    </main>
 
-    <nav>
-      <ul>
-        <li>
-        <Link to="/">Ir al inicio</Link>
-        </li>
-        <li>
-        <Link to="/contacto" className="link" id="contact-link" target="_blank">Ir a contacto</Link>
-        </li>
-      </ul>
-    </nav>
+    
+
   </div>
   );
 }
