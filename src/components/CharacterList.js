@@ -1,4 +1,4 @@
-
+import '../styles/character-list.scss';
 
 const CharacterList = (props) =>{
 

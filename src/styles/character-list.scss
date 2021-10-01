@@ -1,0 +1,33 @@
+@import "./reset.scss";
+
+.characterList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-left: 5vw;
+  &__item {
+    width: 200px;
+
+    &--image {
+      width: 200px;
+    }
+    &--info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: rgb(48, 159, 193);
+      height: 50px;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+
+      line-height: 1.6;
+      margin-top: -3px;
+      margin-bottom: 30px;
+      padding: 10px;
+
+      & h2 {
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+}

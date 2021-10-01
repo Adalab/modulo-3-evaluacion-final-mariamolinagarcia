@@ -7,6 +7,7 @@ import getCharactersFromApi from './services/Api';
 import Header from './Header';
 
 import CharacterList from './CharacterList';
+import Filter from './Filter';
 
 function App() {
   
@@ -32,6 +33,7 @@ function App() {
 
     <main>
       <section>
+        <Filter />
         <CharacterList data={data} />
        </section>
     </main>

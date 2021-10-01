@@ -1,0 +1,16 @@
+@import "./reset.scss";
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  &__input {
+    width: 400px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-color: rgb(48, 159, 193);
+    padding-left: 10px;
+  }
+}
