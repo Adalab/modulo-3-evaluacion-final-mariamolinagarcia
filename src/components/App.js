@@ -12,17 +12,30 @@ import Filter from './Filter';
 function App() {
   
   const [data , setData] = useState([]);
+  const [inputSearch , setInputSearch] = useState ('');
   
 
-
- 
-  useEffect(() => {
+useEffect(() => {
     getCharactersFromApi()
       .then( (data) => {
         setData(data)
     });
   } , []);
-  console.log (data);
+  
+
+  const handleSearch = (value) =>{
+    return setInputSearch(value);
+
+  }
+  console.log(inputSearch);
+  
+  const filteredData = data
+    .filter((character)=>{
+    
+        return character.name.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase());
+      
+    })
+  
 
 
 
@@ -33,8 +46,8 @@ function App() {
 
     <main>
       <section>
-        <Filter />
-        <CharacterList data={data} />
+        <Filter handleSearch={handleSearch} value={inputSearch} />
+        <CharacterList data={filteredData} />
        </section>
     </main>
 

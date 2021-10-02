@@ -1,4 +1,5 @@
 import '../styles/character-list.scss';
+import CharacterCard from './CharacterCard';
 
 const CharacterList = (props) =>{
 
@@ -6,12 +7,7 @@ const CharacterList = (props) =>{
         props.data.map((characterData)=>{
             return(
             <li key={characterData.id} className='characterList__item'>
-                <img className='characterList__item--image' src={characterData.image} alt={characterData.name} />
-                <div className='characterList__item--info'>
-                    <h2>{characterData.name}</h2>
-                    <p>{characterData.species}</p>
-
-                </div>
+                <CharacterCard characterData={characterData}/>
             </li>)
         })
             
