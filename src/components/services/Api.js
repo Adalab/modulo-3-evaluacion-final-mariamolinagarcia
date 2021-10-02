@@ -11,7 +11,8 @@ const getCharactersFromApi =()=>{
                 species: character.species,
                 gender: character.gender,
                 image: character.image,
-                episodes: character.episode
+                episodes: character.episode,
+                origin: character.origin
             };
         }) 
     })

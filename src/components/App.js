@@ -2,12 +2,13 @@
 import '../styles/app.scss';
 
 import { useState, useEffect } from 'react';
-import {  Route, Switch } from 'react-router-dom';
+import {  Route, Switch, useRouteMatch, Link } from 'react-router-dom';
+
 import getCharactersFromApi from './services/Api';
 import Header from './Header';
-
 import CharacterList from './CharacterList';
 import Filter from './Filter';
+import CharacterDetail from './CharacterDetail';
 
 function App() {
   
@@ -23,19 +24,22 @@ useEffect(() => {
   } , []);
   
 
+  
+
+
   const handleSearch = (value) =>{
     return setInputSearch(value);
 
   }
-  console.log(inputSearch);
-  
+ 
+    
   const filteredData = data
     .filter((character)=>{
     
         return character.name.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase());
       
     })
-  
+   
 
 
 
@@ -43,15 +47,23 @@ useEffect(() => {
     <div className="page">
     
     <Header />
-
+    <Switch>
     <main>
+      <Route exact path='/'>
       <section>
         <Filter handleSearch={handleSearch} value={inputSearch} />
-        <CharacterList data={filteredData} />
+        <CharacterList data={filteredData}   />
        </section>
+       </Route>
+       <Route path='/character/:id'>
+          <section>
+          <CharacterDetail  />
+          </section>
+
+       </Route>
     </main>
 
-    
+    </Switch>
 
   </div>
   );

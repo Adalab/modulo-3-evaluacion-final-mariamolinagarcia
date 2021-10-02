@@ -7,7 +7,8 @@ const CharacterList = (props) =>{
         props.data.map((characterData)=>{
             return(
             <li key={characterData.id} className='characterList__item'>
-                <CharacterCard characterData={characterData}/>
+
+                <CharacterCard characterData={characterData}  />
             </li>)
         })
             
