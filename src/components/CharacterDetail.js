@@ -1,14 +1,16 @@
 
 
 import '../styles/characterDetail.scss';
+import {Link} from 'react-router-dom';
 
 const CharacterDetail = (props) =>{
 
+    
 
     return (
         
         <section className="characterDetail">
-            
+            <Link to='../'><div className="characterDetail__return" >Volver </div></Link>
             <div className="characterDetail__image">
             
                 <img src={props.selectedCharacter.image} alt={props.selectedCharacter.name} />
