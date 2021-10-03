@@ -2,7 +2,7 @@
 import '../styles/app.scss';
 
 import { useState, useEffect } from 'react';
-import {  Route, Switch, useRouteMatch, Link } from 'react-router-dom';
+import {  Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import getCharactersFromApi from './services/Api';
 import Header from './Header';
@@ -24,8 +24,21 @@ useEffect(() => {
   } , []);
   
 
+const routerData= useRouteMatch('/character/:id');
+console.log(routerData);
+const characterId = routerData !== null ? routerData.params.id : '';
+console.log(characterId);
+
+const selectedCharacter = data.find((char)=>{
+  return (parseInt(char.id )===parseInt(characterId));
+})
+console.log(selectedCharacter);
+  
+  
+  
   
 
+  
 
   const handleSearch = (value) =>{
     return setInputSearch(value);
@@ -56,9 +69,9 @@ useEffect(() => {
        </section>
        </Route>
        <Route path='/character/:id'>
-          <section>
-          <CharacterDetail  />
-          </section>
+          
+          <CharacterDetail selectedCharacter={selectedCharacter} />
+          
 
        </Route>
     </main>

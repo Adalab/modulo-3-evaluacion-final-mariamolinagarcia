@@ -1,0 +1,38 @@
+.characterDetail {
+  background-color: rgb(48, 159, 193);
+  color: white;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  height: 21em;
+  width: 45em;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+
+    & h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    &--list {
+      & h3 {
+        font-size: 18px;
+        font-weight: bold;
+        padding-right: 5px;
+      }
+      & li {
+        display: flex;
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
