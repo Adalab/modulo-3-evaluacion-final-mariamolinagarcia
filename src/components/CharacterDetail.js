@@ -8,7 +8,11 @@ import ReturnButton from './Return';
 
 
 const CharacterDetail = (props) =>{
+    if(props.selectedCharacter === undefined){
+        return <p>no existe</p>
+    }else{
 
+    
     const dOa = () =>{
         if (props.selectedCharacter.status === 'Dead'){
             return (<img src="https://img.icons8.com/cotton/64/000000/thriller.png"/>)
@@ -42,6 +46,7 @@ const CharacterDetail = (props) =>{
         </section>
        
     );
+}
 }
 
 export default CharacterDetail;

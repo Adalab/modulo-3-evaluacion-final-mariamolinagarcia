@@ -62,8 +62,9 @@ console.log(selectedCharacter);
     <div className="page">
     
     <Header />
-    <Switch>
     <main>
+      <Switch>
+    
       <Route exact path='/'>
         <section>
           <Filter handleSearch={handleSearch} value={inputSearch} />
@@ -80,10 +81,9 @@ console.log(selectedCharacter);
         <ReturnButton /> 
         <h2>El personaje que buscas no existe.</h2>
        </Route>
-    
-    </main>
-
+   
     </Switch>
+    </main>
 
   </div>
   );
