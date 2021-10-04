@@ -2,15 +2,34 @@
 
 .form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-bottom: 50px;
 
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
   &__input {
-    width: 400px;
+    width: 300px;
     height: 40px;
     background-color: black;
     color: white;
     border-color: rgb(48, 159, 193);
     padding-left: 10px;
+    margin-bottom: 20px;
+    @media (min-width: 768px) {
+      width: 400px;
+      margin-bottom: 0px;
+    }
+  }
+  &__select {
+    background-color: black;
+    color: rgb(133, 132, 132);
+    border-color: rgb(48, 159, 193);
+    padding-left: 10px;
+    width: 200px;
+    height: 45px;
+    margin-left: 30px;
   }
 }
