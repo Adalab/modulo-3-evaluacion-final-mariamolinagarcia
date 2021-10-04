@@ -1,7 +1,8 @@
 
 
 import '../styles/characterDetail.scss';
-import {Link} from 'react-router-dom';
+import ReturnButton from './Return';
+
 
 
 
@@ -24,7 +25,8 @@ const CharacterDetail = (props) =>{
             
                 <img src={props.selectedCharacter.image} alt={props.selectedCharacter.name} />
              </div>
-            <div className="characterDetail__info"><Link to='../'><div className="characterDetail__return" >Volver </div></Link>
+            <div className="characterDetail__info">
+                <ReturnButton />
                 <div className="characterDetail__icon">{dOa()}</div>
                 <h2>{props.selectedCharacter.name}</h2>
                 

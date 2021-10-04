@@ -9,6 +9,7 @@ import Header from './Header';
 import CharacterList from './CharacterList';
 import Filter from './Filter';
 import CharacterDetail from './CharacterDetail';
+import ReturnButton from './Return';
 
 function App() {
   
@@ -64,17 +65,22 @@ console.log(selectedCharacter);
     <Switch>
     <main>
       <Route exact path='/'>
-      <section>
-        <Filter handleSearch={handleSearch} value={inputSearch} />
-        <CharacterList data={filteredData}  inputSearch= {inputSearch} />
-       </section>
+        <section>
+          <Filter handleSearch={handleSearch} value={inputSearch} />
+          <CharacterList data={filteredData}  inputSearch= {inputSearch} />
+        </section>
        </Route>
        <Route path='/character/:id'>
           
           <CharacterDetail selectedCharacter={selectedCharacter} />
           
-
        </Route>
+
+       <Route>
+        <ReturnButton /> 
+        <h2>El personaje que buscas no existe.</h2>
+       </Route>
+    
     </main>
 
     </Switch>
