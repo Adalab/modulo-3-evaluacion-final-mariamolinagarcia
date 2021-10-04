@@ -19,7 +19,7 @@ const CharacterDetail = (props) =>{
     
     const dOa = () =>{
         if (props.selectedCharacter.status === 'Dead'){
-            return (<img src="https://img.icons8.com/cotton/64/000000/thriller.png"/>)
+            return (<img src="https://img.icons8.com/cotton/64/000000/thriller.png" alt="skull icon"/>)
         }
     }
     

@@ -27,14 +27,14 @@ useEffect(() => {
   
 
 const routerData= useRouteMatch('/character/:id');
-console.log(routerData);
+
 const characterId = routerData !== null ? routerData.params.id : '';
-console.log(characterId);
+
 
 const selectedCharacter = data.find((char)=>{
   return (parseInt(char.id )===parseInt(characterId));
 })
-console.log(selectedCharacter);
+
   
   
   
