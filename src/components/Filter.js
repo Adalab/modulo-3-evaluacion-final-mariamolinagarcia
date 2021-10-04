@@ -9,12 +9,14 @@ const Filter = (props) =>{
     }
 
     return (
+        <>
         <form className="form">
             <label name='form__label'>
                 <input className='form__input' type='text' value={props.inputSearch} placeholder='Busca tu personaje favorito...' onChange={handleInput}/>
             </label>
         </form>
-
+        
+</>
     );
 }
 

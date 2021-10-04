@@ -14,6 +14,7 @@ function App() {
   
   const [data , setData] = useState([]);
   const [inputSearch , setInputSearch] = useState ('');
+
   
 
 useEffect(() => {
@@ -49,7 +50,7 @@ console.log(selectedCharacter);
   const filteredData = data
     .filter((character)=>{
     
-        return character.name.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase());
+        return character.name.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) ;
       
     })
    
@@ -65,7 +66,7 @@ console.log(selectedCharacter);
       <Route exact path='/'>
       <section>
         <Filter handleSearch={handleSearch} value={inputSearch} />
-        <CharacterList data={filteredData}   />
+        <CharacterList data={filteredData}  inputSearch= {inputSearch} />
        </section>
        </Route>
        <Route path='/character/:id'>
