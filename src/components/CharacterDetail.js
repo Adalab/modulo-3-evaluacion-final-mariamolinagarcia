@@ -9,7 +9,11 @@ import ReturnButton from './Return';
 
 const CharacterDetail = (props) =>{
     if(props.selectedCharacter === undefined){
-        return <p>no existe</p>
+        return (
+        <div>
+            <ReturnButton />
+        <h2>El personaje que buscas no existe.</h2>
+        </div>)
     }else{
 
     

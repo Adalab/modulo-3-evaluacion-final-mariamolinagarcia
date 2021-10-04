@@ -13,10 +13,12 @@ const CharacterList = (props) =>{
             
                 <CharacterCard characterData={characterData} />
             </li>)  
-        }): <p className={`characterList__message ${props.message}`}>No hay ningún personaje que coincida con la palabra "{props.inputSearch}"</p>;
+        }) : <p className={`characterList__message ${props.message}`}>No hay ningún personaje que coincida con la palabra "{props.inputSearch}"</p>;
             
             
+       
         
+       
     
 
     return (

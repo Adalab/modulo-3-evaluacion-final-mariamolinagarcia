@@ -15,7 +15,7 @@ function App() {
   
   const [data , setData] = useState([]);
   const [inputSearch , setInputSearch] = useState ('');
-
+  const [searchSpecies , setSearchSpecies] = useState('all');
   
 
 useEffect(() => {
@@ -39,7 +39,9 @@ console.log(selectedCharacter);
   
   
   
-
+  const handleSearchSpecies =(value)=>{
+    return setSearchSpecies(value);
+  }
   
 
   const handleSearch = (value) =>{
@@ -54,6 +56,13 @@ console.log(selectedCharacter);
         return character.name.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) ;
       
     })
+    .filter((character)=>{
+      if(searchSpecies=== 'all'){
+        return data;
+      }else{
+        return character.species === searchSpecies;
+      }
+    })
    
 
 
@@ -67,7 +76,7 @@ console.log(selectedCharacter);
     
       <Route exact path='/'>
         <section>
-          <Filter handleSearch={handleSearch} value={inputSearch} />
+          <Filter handleSearch={handleSearch} value={inputSearch} handleSearchSpecies={handleSearchSpecies} searchSpecies={searchSpecies}/>
           <CharacterList data={filteredData}  inputSearch= {inputSearch} />
         </section>
        </Route>
@@ -79,7 +88,7 @@ console.log(selectedCharacter);
 
        <Route>
         <ReturnButton /> 
-        <h2>El personaje que buscas no existe.</h2>
+        <h2>Página no encontrada.</h2>
        </Route>
    
     </Switch>
