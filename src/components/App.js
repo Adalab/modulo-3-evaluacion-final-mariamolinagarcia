@@ -18,26 +18,30 @@ function App() {
   const [searchSpecies , setSearchSpecies] = useState('all');
   
 
-useEffect(() => {
-    getCharactersFromApi()
-      .then( (data) => {
-        setData(data)
-    });
-  } , []);
+  useEffect(() => {
+      getCharactersFromApi()
+        .then( (data) => {
+          setData(data)
+      });
+    } , []);
+    
+
+  const routerData= useRouteMatch('/character/:id');
+
+  const characterId = routerData !== null ? routerData.params.id : '';
+
+
+  const selectedCharacter = data.find((char)=>{
+    return (parseInt(char.id )===parseInt(characterId));
+  })
+
   
-
-const routerData= useRouteMatch('/character/:id');
-
-const characterId = routerData !== null ? routerData.params.id : '';
-
-
-const selectedCharacter = data.find((char)=>{
-  return (parseInt(char.id )===parseInt(characterId));
-})
-
-  
-  
-  
+  data.sort((a,b) =>{
+    let textA = a.name;
+    let textB = b.name;
+    return ((textA<textB) ? -1 : (textA>textB)? 1 :0); 
+  });
+    
   
   const handleSearchSpecies =(value)=>{
     return setSearchSpecies(value);
