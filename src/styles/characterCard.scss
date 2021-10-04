@@ -1,0 +1,22 @@
+.characterList__item--image {
+  width: 200px;
+}
+.characterList__item--info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(48, 159, 193);
+  height: 50px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+
+  line-height: 1.6;
+  margin-top: -3px;
+  margin-bottom: 30px;
+  padding: 10px;
+
+  & h2 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+}
