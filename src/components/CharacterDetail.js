@@ -3,20 +3,31 @@
 import '../styles/characterDetail.scss';
 import {Link} from 'react-router-dom';
 
+
+
+
 const CharacterDetail = (props) =>{
 
+    const dOa = () =>{
+        if (props.selectedCharacter.status === 'Dead'){
+            return (<img src="https://img.icons8.com/cotton/64/000000/thriller.png"/>)
+        }
+    }
     
 
     return (
         
         <section className="characterDetail">
-            <Link to='../'><div className="characterDetail__return" >Volver </div></Link>
+            
+
             <div className="characterDetail__image">
             
                 <img src={props.selectedCharacter.image} alt={props.selectedCharacter.name} />
              </div>
-            <div className="characterDetail__info">
+            <div className="characterDetail__info"><Link to='../'><div className="characterDetail__return" >Volver </div></Link>
+                <div className="characterDetail__icon">{dOa()}</div>
                 <h2>{props.selectedCharacter.name}</h2>
+                
                 <ul className="characterDetail__info--list">
                     <li><h3>Status:</h3><p>{props.selectedCharacter.status}</p></li>
                     <li><h3>Species: </h3><p>{props.selectedCharacter.species}</p></li>
