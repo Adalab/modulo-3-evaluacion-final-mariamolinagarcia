@@ -55,7 +55,7 @@ function App() {
   
 
   const filteredData = data
-    .sort((a,b) =>{
+    /*.sort((a,b) =>{
           
           
           if(order === 'byname'){
@@ -67,7 +67,7 @@ function App() {
           
           return  data2;
         }
-      })
+      }) */
 
     .filter((character)=>{
     
@@ -81,8 +81,14 @@ function App() {
         return character.species === searchSpecies;
       }
     })
-    console.log(data);
-    console.log(data2);
+   if (order=== 'byname'){
+    filteredData.sort((a,b) =>{
+      
+        let textA = a.name;
+        let textB = b.name;
+        return (textA<textB) ? -1 : (textA>textB)? 1 :0;
+   })
+  }
     
     
   
