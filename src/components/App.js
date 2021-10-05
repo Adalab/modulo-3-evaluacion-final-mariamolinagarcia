@@ -16,16 +16,18 @@ function App() {
   const [data , setData] = useState([]);
   const [inputSearch , setInputSearch] = useState ('');
   const [searchSpecies , setSearchSpecies] = useState('all');
+  const [order, setOrder] = useState ('default');
+  const [data2 , setData2]=useState([]);
   
-
   useEffect(() => {
       getCharactersFromApi()
         .then( (data) => {
-          setData(data)
+          setData(data);
+          setData2 (data.slice());
       });
     } , []);
     
-
+        
   const routerData= useRouteMatch('/character/:id');
 
   const characterId = routerData !== null ? routerData.params.id : '';
@@ -33,15 +35,8 @@ function App() {
 
   const selectedCharacter = data.find((char)=>{
     return (parseInt(char.id )===parseInt(characterId));
-  })
-
-  
-  data.sort((a,b) =>{
-    let textA = a.name;
-    let textB = b.name;
-    return ((textA<textB) ? -1 : (textA>textB)? 1 :0); 
   });
-    
+
   
   const handleSearchSpecies =(value)=>{
     return setSearchSpecies(value);
@@ -52,9 +47,28 @@ function App() {
     return setInputSearch(value);
 
   }
+  
+  const handleOrder =(value)=>{
+    return setOrder(value);
+  }
  
-    
+  
+
   const filteredData = data
+    .sort((a,b) =>{
+          
+          
+          if(order === 'byname'){
+            let textA = a.name;
+            let textB = b.name;
+            return (textA<textB) ? -1 : (textA>textB)? 1 :0; 
+        
+        }else if(order === 'default'){
+          
+          return  data2;
+        }
+      })
+
     .filter((character)=>{
     
         return character.name.toLocaleLowerCase().includes(inputSearch.toLocaleLowerCase()) ;
@@ -67,6 +81,12 @@ function App() {
         return character.species === searchSpecies;
       }
     })
+    console.log(data);
+    console.log(data2);
+    
+    
+  
+  
    
 
 
@@ -80,7 +100,8 @@ function App() {
     
       <Route exact path='/'>
         <section>
-          <Filter handleSearch={handleSearch} value={inputSearch} handleSearchSpecies={handleSearchSpecies} searchSpecies={searchSpecies}/>
+          <Filter handleSearch={handleSearch} value={inputSearch} handleSearchSpecies={handleSearchSpecies} searchSpecies={searchSpecies} handleOrder={handleOrder} 
+          order={order}/>
           <CharacterList data={filteredData}  inputSearch= {inputSearch} />
         </section>
        </Route>

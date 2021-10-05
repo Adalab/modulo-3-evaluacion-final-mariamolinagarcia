@@ -11,12 +11,15 @@ const Filter = (props) =>{
     const handleSelectSpecies = (ev)=>{
         const value= ev.currentTarget.value;
         return props.handleSearchSpecies(value);
+    }
 
-
+    const handleSelectOrder = (ev) => {
+        const value= ev.currentTarget.value;
+        return props.handleOrder(value);
     }
 
     return (
-        <>
+        
         <form className="form" onSubmit={handleForm}>
             <label name='form__label'>
                 <input className='form__input' type='text' value={props.inputSearch} placeholder='Busca tu personaje favorito...' onChange={handleInput}/>
@@ -30,9 +33,18 @@ const Filter = (props) =>{
                 <option value='Human'>Human</option>
             </select>
             </label>
+            <label name='order'>
+            <select className='form__select' name='order' id='order' value={props.order} onChange={handleSelectOrder}>
+                
+            <option value='default'>Default</option>
+            <option value='byname'>By name</option>
+                
+            </select>
+            </label>
+            
         </form>
         
-</>
+
     );
 }
 
